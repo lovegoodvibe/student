@@ -1,0 +1,184 @@
+{
+  "base": {
+    "insert": {
+      "success": "Thêm mới thành công",
+      "error": "Thêm mới thất bại"
+    },
+    "update": {
+      "success": "Cập nhật thành công",
+      "error": "Cập nhật thất bại"
+    },
+    "delete": {
+      "success": "Xóa thành công",
+      "error": "Xóa thất bại"
+    },
+    "import": {
+      "success": "Nhập thành công",
+      "erorr": "Nhập thất bại"
+    }
+  },
+  "validationMessage": {
+    "any": {
+      "unknown": "Không được phép",
+      "invalid": "Chứa một giá trị không hợp lệ",
+      "empty": "Không được để trống",
+      "required": "Bắt buộc",
+      "allowOnly": "Phải là là một trong {{valids}}",
+      "default": "Đã gặp lỗi khi chạy phương thức mặc định"
+    },
+    "alternatives": {
+      "base": "không phù hợp với lựa chọn thay thế nào",
+      "child": null
+    },
+    "array": {
+      "base": "Phải là một mảng",
+      "includes": "Vị trí {{pos}} không được phép",
+      "includesSingle": "Giá trị duy nhất của \"{{!label}}\" không được phép",
+      "includesOne": "Vị trí {{pos}} lỗi vì {{reason}}",
+      "includesOneSingle": "Giá trị duy nhất của \"{{!label}}\" lỗi vì {{reason}}",
+      "includesRequiredUnknowns": "không được chứa các giá trij bắt buộc {{unknownMisses}}",
+      "includesRequiredKnowns": "Không được chứa {{knownMisses}}",
+      "includesRequiredBoth": "Không được chứa các giá trị bắt buộc {{knownMisses}} và {{unknownMisses}}",
+      "excludes": "Vị trí {{pos}} chứa một giá trị bị loại trừ",
+      "excludesSingle": "Giá trị duy nhất của \"{{!label}}\" chứa giá trị bị loại trừ",
+      "hasKnown": "Không chứa yêu cầu nào phù hợp với \"{{!patternLabel}}\"",
+      "hasUnknown": "Không chứa yêu cầu nào phù hợp",
+      "min": "Phải chứa ít nhất {{limit}} phần tử",
+      "max": "Phải chứa ít hơn hoặc bằng {{limit}} phần tử",
+      "length": "Phải chứa {{limit}} phần tử",
+      "ordered": "vị trí {{pos}} lỗi vì {{reason}}",
+      "orderedLength": "Vị trí {{pos}} lỗi vì mảng chỉ được chứa nhiều nhất {{limit}} phần tử",
+      "ref": "Tham chiếu \"{{ref}}\" không phải là số nguyên dương",
+      "sparse": "Phải là mảng rời rạc",
+      "unique": "Vị trí {{pos}} chứa giá trị trùng lắp"
+    },
+    "boolean": {
+      "base": "Phải là một giá trị luận lý"
+    },
+    "binary": {
+      "base": "Phải là buffer hoặc chuỗi",
+      "min": "Phải chứa ít nhất {{limit}} bytes",
+      "max": "Phải chứa ít hơn hoặc bằng {{limit}} bytes",
+      "length": "Phải là {{limit}} bytes"
+    },
+    "date": {
+      "base": "Phải là số giây hoặc giá trị ngày tháng hợp lệ",
+      "strict": "Phải là ngày tháng hợp lệ",
+      "min": "Phải hải lớn hơn hoặc bằng \"{{limit}}\"",
+      "max": "Phản nhỏ hơn hoặc bằng \"{{limit}}\"",
+      "less": "Phải nhỏ hơn \"{{limit}}\"",
+      "greater": "Phải lớn hơn \"{{limit}}\"",
+      "isoDate": "Ngày tháng phải đúng chuẩn ISO 8601",
+      "timestamp": {
+        "javascript": "Phải là mốc thời gian hoặc giá trị tính bằng mili giây",
+        "unix": "Phải là một mốc thời gian hoặc giá trị tính bằng giây"
+      },
+      "ref": "Yham chiếu \"{{ref}}\" không phải là ngày tháng"
+    },
+    "function": {
+      "base": "Phải là một hàm",
+      "arity": "Phải có một đối số của {{n}}",
+      "minArity": "Phải có đối số lớn hơn hoặc bằng {{n}}",
+      "maxArity": "Phải có đối số bé hơn hoặc bằng {{n}}",
+      "ref": "Phải là một tham chiếu Joi",
+      "class": "Phải là một class"
+    },
+    "lazy": {
+      "base": "!!schema error: lazy schema must be set",
+      "schema": "!!schema error: lazy schema function must return a schema"
+    },
+    "object": {
+      "base": "phải là một object",
+      "child": "!!child \"{{!child}}\" không thành công vì {{reason}}",
+      "min": "Phải có ít nhất {{limit}} con",
+      "max": "Phải có ít hơn hoặc bằng {{limit}} con",
+      "length": "Phải có {{limit}} con",
+      "allowUnknown": "!!\"{{!child}}\" không được phép",
+      "with": "!!\"{{mainWithLabel}}\" thiếu đồng đẳng cần thiết \"{{peerWithLabel}}\"",
+      "without": "!!\"{{mainWithLabel}}\" xung đột với đồng đẳng bị cấm \"{{peerWithLabel}}\"",
+      "missing": "Phải chứa ít nhất một trong {{peersWithLabels}}",
+      "xor": "Chứa xung đột giữa các đồng đẳng duy nhất {{peersWithLabels}}",
+      "oxor": "Chứa xung đột giữa các đồng đẳng tùy chọn duy nhất {{peersWithLabels}}",
+      "and": "Chứa {{presentWithLabels}} mà không có đồng đẳng {{missingWithLabels}}",
+      "nand": "!!\"{{mainWithLabel}}\" không được tồn tại đồng thời với {{peersWithLabels}}",
+      "assert": "!!\"{{ref}}\" validation \"{{ref}}\" thất bại vì {{message}}",
+      "rename": {
+        "multiple": "Không thể đổi tên \"{{from}}\" vì đổi tên nhiều lần đã bị tắt và một khóa khác đã được đổi tên thành \"{{to}}\"",
+        "override": "Không thể đổi tên \"{{from}}\" vì tính năng ghi đè bị tắt và target \"{{to}}\" đã tồn tại",
+        "regex": {
+          "multiple": "Không thể đổi tên {{from}} vì đổi tên nhiều lần đã bị tắt và một khóa khác đã được đổi tên thành \"{{to}}\"",
+          "override": "Không thể đổi tên {{from}} vì tính năng ghi đè bị tắt và target \"{{to}}\" đã tồn tại"
+        }
+      },
+      "type": "Phải là thể hiện của \"{{type}}\"",
+      "schema": "Phải là thể hiện của Joi"
+    },
+    "number": {
+      "base": "Phải là một số",
+      "unsafe": "Phải là một số an toàn",
+      "min": "Phải lớn hơn hoặc bằng {{limit}}",
+      "max": "Phải bé hơn hoặc bằng {{limit}}",
+      "less": "Phải nhỏ hơn {{limit}}",
+      "greater": "Phải lớn hơn {{limit}}",
+      "integer": "Phải là một số nguyên",
+      "negative": "Phải là một số nguyên dương",
+      "positive": "Phải là một số nguyên âm",
+      "precision": "Không được nhiều hơn {{limit}} số sau dấu phẩy",
+      "ref": "Tham chiếu \"{{ref}}\" không phải kiểu số",
+      "multiple": "Phải là bội số của {{multiple}}",
+      "port": "Phải là port hợp lệ"
+    },
+    "string": {
+      "base": "Phải là một chuỗi",
+      "min": "Chuỗi phải gồm ít nhất {{limit}} ký tự",
+      "max": "Chuỗi phải nhỏ hơn hoặc bằng {{limit}} ký tự",
+      "length": "Chuỗi phải chứa {{limit}} ký tự",
+      "alphanum": "Chỉ được chứa các ký tự thường",
+      "token": "Chỉ được chứa ký số và ký tự thường",
+      "regex": {
+        "base": "Giá trị \"{{!value}}\" không khớp với mẫu: {{pattern}}",
+        "name": "Giá trị \"{{!value}}\" không khớp với mẫu {{name}}",
+        "invert": {
+          "base": "Giá trị \"{{!value}}\" khớp với mẫu đảo ngược:: {{pattern}}",
+          "name": "Giá trị \"{{!value}}\" khớp với mẫu đảo ngược {{name}}"
+        }
+      },
+      "email": "Phải là địa chỉ mail hợp lệ",
+      "uri": "Phải là một uri hợp lệ",
+      "uriRelativeOnly": "Phải là một đường dẫn tương đối uri hợp lệ",
+      "uriCustomScheme": "Phải là một đường dẫn uri hợp lệ với scheme khớp với mẫu {{scheme}}",
+      "isoDate": "Phải là ngày tháng dạng ISO 8601 hợp lệ",
+      "guid": "Phải là một GUID hợp lệ",
+      "hex": "Chỉ được chứa các ký tự thập lục phân",
+      "hexAlign": "Hex được giải mã phải được căn chỉnh theo byte",
+      "base64": "Phải là một chuỗi base64 hợp lệ",
+      "dataUri": "Phải là một chuỗi dataUri hợp lệ",
+      "hostname": "Phải là hostname hợp lệ",
+      "normalize": "Phải được chuẩn hóa unicode trong biểu mẫu {{form}}",
+      "lowercase": "Chỉ được chứa các ký tự thường",
+      "uppercase": "Chỉ được chứa các ký tự in hoa",
+      "trim": "Không được chứa khoảng trắng ở đầu hoặc cuối",
+      "creditCard": "Phải là một thẻ tín dụng",
+      "ref": "Tham chiếu \"{{ref}}\" không phải là một số",
+      "ip": "Phải là một địa chỉ ip hợp lệ với một CIDR {{cidr}}",
+      "ipVersion": "Phải là địa chỉ ip hợp lệ của một trong các phiên bản {{version}} với một CIDR {{cidr}}"
+    },
+    "symbol": {
+      "base": "Phải là một biểu tượng",
+      "map": "Phải là một trong {{map}}"
+    }
+  },
+  "auths": {
+    "account_not_found": "Không tìm thấy người dùng",
+    "get_user_fail_from_token": "Không thể lấy thông tin người dùng từ Token"
+  },
+  "get_success": "Lấy dữ liệu thành công",
+  "get_failed": "Lấy dữ liệu thất bại!",
+  "insert_success": "Thêm mới thành công",
+  "insert_failed": "Thêm mới thất bại!",
+  "update_success": "Cập nhập thành công",
+  "update_failed": "Cập nhập thất bại!",
+  "delete_success": "Xóa thành công",
+  "delete_failed": "Xóa thất bại!"
+}
+
