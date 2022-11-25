@@ -14,13 +14,13 @@ async function insertStudent(params) {
     const trx = await knex.transaction();
     const createdDate = new Date();
     try {
-        const {id, name, age, email, classId, address, score, createdDate, createdBy, description, deleteStatus } = params;
+        const {name, age, email, classId, address, score, createdDate, createdBy, description, deleteStatus, password } = params;
         ///check duplicate
         const classCheck = await trx('tbl_student').where({name});
         if (_.size(classCheck) > 0) {
             throw new UserError('INSERT_FAILED', ` ${name}: ${i18.__('is_exits')}`);
         }
-        const data = { name, age, email, address, classId, score, createdDate, createdBy, description };
+        const data = { name, age, email, address, classId, score, createdDate, createdBy, description, password };
         await trx('tbl_student').insert(data);
         await trx.commit();
     } catch (e) {
@@ -31,13 +31,13 @@ async function insertStudent(params) {
 async function updateStudent(params) {
     const trx = await knex.transaction();
     try {
-        const {id, name, age, email, classId, address, score, createdDate, createdBy, description, deleteStatus} = params;
+        const {id, name, age, email, classId, address, score, updatedDate, updatedBy, description, deleteStatus, password} = params;
         ///check duplicate
         // const classCheck = await trx('tbl_student').where({classId});
         // if (_.size(classCheck) === 0) {
         //     throw new UserError('UPDATE_FAILED', ` ${classId}: ${i18.__('is_exits')}`);
         // }
-        const data = {id, name, age, email, classId, address, score, createdDate, createdBy, description};
+        const data = {id, name, age, email, classId, address, score, updatedDate, updatedBy, description, password};
         await trx('tbl_student').update(data).where("id",id);
         await trx.commit();
     } catch (e) {

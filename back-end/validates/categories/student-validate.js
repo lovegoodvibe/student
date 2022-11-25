@@ -30,6 +30,9 @@ const insertStudent = {
         description: Joi.string()
             .allow('', null)
             .max(255),
+        password: Joi.string().trim()
+            .min(1)
+            .max(50).required(),
         score:Joi.number()
             .min(1)
             .max(100).required()
@@ -60,11 +63,14 @@ const updateStudent = {
             .max(255),
         score:Joi.number()
             .min(1)
-            .max(100).required()
+            .max(100).required(),
+        password: Joi.string().trim()
+            .min(1)
+            .max(50).required()
     },
 };
 const deleteStudent = {
-    query: {
+    body: {
         id: Joi.number()
             .min(1)
             .max(45).required(),

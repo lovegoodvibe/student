@@ -1,43 +1,55 @@
-import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {Form, Button} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
-import {Link} from "react-router-dom";
 import axios from "axios";
+import _ from "lodash";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import history from "../history";
+
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            persons:[],
-            name: '',
-            email:'',
-            check: '/'
+            persons: [],
+            password: '',
+            email: '',
         }
     }
+
     componentDidMount() {
         axios.get(`http://localhost:3001/api/student/`)
             .then(res => {
-                console.log(res.data)
                 const persons = res.data;
-                this.setState({ persons });
+                this.setState({persons});
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
     }
+
     handleChange = (e, data) => {
         const {name, value} = data;
-        this.setState( {
+        this.setState({
             [name]: value
         })
     }
     logIn = () => {
-        this.state.persons && this.state.persons.map((item,) => {
-            if(this.state.email === item.email && this.state.name === item.name){
-                this.setState({check:'/main'})
-            }
-        })
+        const {persons, email, name} = this.state;
+        const find = _.find(persons, function (r) {
+            return r.name === name && r.email === email;
+        });
+        if (find) {
+            history.push("/main");
+            history.go(0);
+            //history.back();
+        } else {
+            toast.error(`tai khoan voi email: ${email} khong co tren he thong`, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
 
     render() {
-        const { email, name } = this.state
+        const {email, password} = this.state
         return (
             <div>
                 <Form>
@@ -54,17 +66,18 @@ class Login extends Component {
                     <Form.Group widths='equal'>
                         <Form.Input
                             fluid
-                            label={<label>{"name"}<span>*</span></label>}
-                            placeholder='name'
-                            name={"name"}
-                            value={name}
+                            type={'password'}
+                            label={<label>{"password"}<span>*</span></label>}
+                            placeholder='password'
+                            name={"password"}
+                            value={password}
                             onChange={this.handleChange}
                         />
                     </Form.Group>
-                    <Link to ={this.state.check} >
+
                     <Button type='submit' onClick={this.logIn}>Submit</Button>
-                    </Link>
                 </Form>
+                <ToastContainer/>
             </div>
         )
     }

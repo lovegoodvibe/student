@@ -30,11 +30,11 @@ async function insertStudent(req, res) {
 }
 async function deleteStudent(req, res) {
     try {
-        const {query} = req;
+        const {body} = req;
         const updatedDate = new Date();
-        const updatedBy = 'BOT';
+        const updatedBy = 'DeletedBot';
         await studentModel.deleteStudent({
-            ...query, updatedDate, updatedBy
+            ...body, updatedDate, updatedBy
         });
         res.json({message: i18.__('delete_success')});
     } catch (error) {
@@ -45,7 +45,7 @@ async function updateStudent(req, res) {
     try {
         const {body} = req;
         const updatedDate = new Date();
-        const updatedBy = 'BOT';
+        const updatedBy = 'UpdatedBot';
         await studentModel.updateStudent({
             ...body, updatedDate, updatedBy
         });
